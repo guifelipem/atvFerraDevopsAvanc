@@ -1,0 +1,16 @@
+name: 09 - Agendamento de Sábado
+
+on: 
+  schedule: 
+    # vai rodar ao meio dia dos sábados
+    - cron: '0 12 * * 6'
+
+  # add botao para testar
+  workflow_dispatch:
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodar tarefa de sábado
+        run: echo "Rodando a tarefa de sábado..."
