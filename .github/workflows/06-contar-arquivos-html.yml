@@ -17,5 +17,5 @@ jobs:
           # | conecta os comandos
           # wc = contador de palavras -l = flag para contar apenas linhas
           # vai dar uma lista e depois vai contar quantas linhas tem a lista
-          count=$(ls *.html | wc - l) 
+          count=$(ls *.html | wc -l) 
           echo "Total de arquivos html: $count"
