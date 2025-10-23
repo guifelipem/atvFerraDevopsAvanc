@@ -1,0 +1,31 @@
+name: 12 - Steps Paralelos
+
+on:
+  push:
+    branches: [ main ]
+
+# jobs separados rodam ao mesmo tempo
+jobs:
+  job-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar Data
+        run: 'echo "Data: $(date)"'
+
+  job-usuario:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar Usuário
+        run: 'echo "Usuário: ${{ github.actor }}"'
+
+  job-contagem:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Contar arquivos
+        run: |
+          html_count=$(ls *.html | wc -l)
+          css_count=$(ls *.css | wc -l)
+          js_count=$(ls *.js | wc -l)
+          echo "Arquivos -> HTML: $html_count, CSS: $css_count, JS: $js_count"
