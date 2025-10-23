@@ -1,11 +1,11 @@
 name: 05 - Listar Arquivos
 
 on:
-  push: 
+  push:
     branches: [ main ]
 
-jobs: 
-  build: 
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
