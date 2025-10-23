@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Calcular e mostrar a variável
-        # Define uma variável de ambiente SOMA para o step 
-        env:
+        run: |
           SOMA: $((2+2))
-        run: echo "O resultado de 2+2 é $SOMA"
+          echo "O resultado de 2+2 é $SOMA"
