@@ -17,7 +17,5 @@ jobs:
 
       - name: 2. Contar todos os arquivos
         run: |
-          # Usando 'ls -aR' para incluir os ocultos (como .github)
-          # e 'wc -l' para contar as linhas/arquivos.
           count=$(ls -R | wc -l)
           echo "Total de arquivos e pastas no repositório: $count"
