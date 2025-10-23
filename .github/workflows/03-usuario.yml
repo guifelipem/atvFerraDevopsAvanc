@@ -1,0 +1,13 @@
+name: 03 - Usuário do Push
+
+on: 
+  push:
+    branches: [ main] 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar Usuário
+        # github.actor é uma variável do github
+        run: 'echo "Usuário que fez o push: ${{ github.actor }}"'
