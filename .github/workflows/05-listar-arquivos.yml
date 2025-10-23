@@ -14,5 +14,5 @@ jobs:
       - name: Listar Arquivos
         run: |
           echo "Lista de arquivos:"
-          ls -R
+          ls -aR
       
