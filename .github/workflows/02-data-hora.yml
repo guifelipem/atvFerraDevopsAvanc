@@ -1,0 +1,12 @@
+name: 02 - Data e Hora
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar data e hora
+        run: 'echo "Data e Hora do push: $(date)"'
