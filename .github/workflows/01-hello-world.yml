@@ -1,0 +1,12 @@
+name: 01 - Hello World
+
+on:
+  push: # Dispara a action em qualquer push
+    branches: [ main ]
+    
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
