@@ -1,0 +1,21 @@
+name: 06 - Contar Arquivos HTML
+
+on:
+  push:
+    branches: [ main ]
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Contar Arquivos HTML
+        run: |
+          # ls = comando listar *.html = *: qualquer coisa com final .html  
+          # | conecta os comandos
+          # wc = contador de palavras -l = flag para contar apenas linhas
+          # vai dar uma lista e depois vai contar quantas linhas tem a lista
+          count=$(ls *.html | wc - l) 
+          echo "Total de arquivos html: $count"
