@@ -1,0 +1,29 @@
+name: 10 - Alertar Arquivo Grande
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+      
+      # Este step encontra os arquivos e guarda o resultado (true/false)
+      - name: Encontrar arquivos maiores que 100kb
+        id: find_large_files
+        run: |
+          if [ -n "$(find . -type f -size +100k)" ]; then
+            echo "large_file_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "large_file_found=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Este step só roda se o 'if' for verdadeiro
+      - name: Alertar sobre arquivos grandes
+        if: steps.find_large_files.outputs.large_file_found == 'true'
+        run: |
+          echo "ALERTA: Foram encontrados arquivos maiores que 100kb!"
+          find . -type f -size +100k
