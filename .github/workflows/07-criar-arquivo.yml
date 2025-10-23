@@ -1,0 +1,43 @@
+name: 07 - Criar Arquivo
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Permissão para o action fazer o push
+    permissions:
+      contents: write
+
+    steps:
+      - name: 1. Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 2. Gerar arquivo de informações
+        run: |
+          echo "--- Relatório do Push ---" > info-do-push.txt
+          echo "Push feito por: ${{ github.actor }}" >> info-do-push.txt
+          echo "Data/Hora do Job: $(date)" >> info-do-push.txt
+          echo "Commit SHA: ${{ github.sha }}" >> info-do-push.txt
+          echo "Disparado pelo evento: ${{ github.event_name }}" >> info-do-push.txt
+
+      - name: 3. Configurar o Git Bot
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "bot-de-action@github.com"
+
+      - name: 4. Fazer Commit e Push (se houver mudanças)
+        run: |
+          git add info-do-push.txt
+          
+          # Este comando só faz commit/push se o arquivo info-do-push.txt
+          # for diferente da versão anterior no repositório.
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Atualiza info-do-push.txt via Action"
+            git push
+          else
+            echo "Nenhuma mudança no arquivo, commit não é necessário."
+          fi
