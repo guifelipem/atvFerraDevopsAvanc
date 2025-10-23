@@ -1,0 +1,15 @@
+name: 04 - Calcular 2 + 2
+
+on: 
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calcular e mostrar a variável
+        # Define uma variável de ambiente SOMA para o step 
+        env:
+          SOMA: $((2+2))
+        run: echo "O resultado de 2+2 é $SOMA"
