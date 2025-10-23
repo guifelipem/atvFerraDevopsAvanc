@@ -1,0 +1,26 @@
+name: 11 - Vários Steps (Sequencial)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # steps dentro de um 'job' rodam em sequência por padrão
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 1. Mostrar Data
+        run: 'echo "Data: $(date)"'
+
+      - name: 2. Mostrar Usuário
+        run: 'echo "Usuário: ${{ github.actor }}"'
+
+      - name: 3. Contar arquivos
+        run: |
+          html_count=$(ls *.html | wc -l)
+          css_count=$(ls *.css | wc -l)
+          js_count=$(ls *.js | wc -l)
+          echo "Arquivos -> HTML: $html_count, CSS: $css_count, JS: $js_count"
