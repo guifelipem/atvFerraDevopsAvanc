@@ -7,6 +7,9 @@ on:
     # vai rodar todo dia as 2h da manha do fuso horário mundial, e as 23h(do dia anterior) do horario de brasilia
     - cron: '0 2 * * *'
 
+  #adiciona um botão para poder testar o workflow sem esperar chegar a noite
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
