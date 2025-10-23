@@ -1,0 +1,15 @@
+name: 08 - Agendamento Noturno 
+
+on: 
+  schedule: 
+    # usa a sintaxe "cron": nome de utilitário de agendamento de tarefas usado em Linux
+    # "0 2 * * *" = 2:00 da manhã (UTC) todos os dias: os campos representam: minuto hora diaMes mes diaSemana
+    # vai rodar todo dia as 2h da manha do fuso horário mundial, e as 23h(do dia anterior) do horario de brasilia
+    - cron: '0 2 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodar tarefa noturna
+        run: echo "Rodando a tarefa agendada da noite..."
