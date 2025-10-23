@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Calcular e mostrar a variável
         run: |
-          SOMA = $((2+2))
+          SOMA=$((2+2))
           echo "O resultado de 2+2 é $SOMA"
