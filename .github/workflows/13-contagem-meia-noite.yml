@@ -1,0 +1,23 @@
+name: 13 - Contagem Meia-Noite (Brasília)
+
+on:
+  schedule:
+    # "0 3 * * *" = 03:00 UTC (que é 00:00 no horário de Brasília)
+    - cron: '0 3 * * *'
+
+  # add botão para teste manual
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 2. Contar todos os arquivos
+        run: |
+          # Usando 'ls -aR' para incluir os ocultos (como .github)
+          # e 'wc -l' para contar as linhas/arquivos.
+          count=$(ls -aR | wc -l)
+          echo "Total de arquivos e pastas no repositório: $count"
