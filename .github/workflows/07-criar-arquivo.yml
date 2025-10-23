@@ -21,7 +21,6 @@ jobs:
           echo "--- Relatório do Push ---" > info-do-push.txt
           echo "Push feito por: ${{ github.actor }}" >> info-do-push.txt
           echo "Data/Hora do Job: $(date)" >> info-do-push.txt
-          echo "Commit SHA: ${{ github.sha }}" >> info-do-push.txt
           echo "Disparado pelo evento: ${{ github.event_name }}" >> info-do-push.txt
 
       - name: 3. Configurar o Git Bot
